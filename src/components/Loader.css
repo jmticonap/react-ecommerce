@@ -1,0 +1,31 @@
+/*=============== LOADER ===============*/
+.load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-color);
+    z-index: 1000;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .load svg {
+    fill: var(--first-color);
+    width: 100px;
+    animation: scroll 1.5s infinite;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
