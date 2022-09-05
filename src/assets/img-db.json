@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "name":"Pantalón Adidas Sportwear Future",
+        "price":180,
+        "imagePath":"src/assets/img-db/pantalon_adidas_sportswear_future.jpg",
+        "stock":10,
+        "category":["pantalon"]
+    },
+    {
+        "id": 2,
+        "name":"Pantolón Adidas Camuflaje",
+        "price":170,
+        "imagePath":"src/assets/img-db/pantalon_camuflaje.jpg",
+        "stock":10,
+        "category":["pantalon"]
+    },
+    {
+        "id": 3,
+        "name":"Pantalón Adidas de entranamiento Sereno",
+        "price":210,
+        "imagePath":"src/assets/img-db/pantalon_entrenamiento_sereno.jpg",
+        "stock":10,
+        "category":["pantalon","entrenamiento"]
+    },
+    {
+        "id": 4,
+        "name":"Polo Adidas designed 2",
+        "price":80,
+        "imagePath":"src/assets/img-db/polo_designed_2_move_3_tiras_negro.jpg",
+        "stock":10,
+        "category":["polo","runner"]
+    },
+    {
+        "id": 5,
+        "name":"Polo Adidas estampado integras",
+        "price":70,
+        "imagePath":"src/assets/img-db/polo_estampado_integral_camo_series.jpg",
+        "stock":15,
+        "category":["polo"]
+    },
+    {
+        "id": 6,
+        "name":"Polo Adidas runner negro",
+        "price":95,
+        "imagePath":"src/assets/img-db/polo_runner_negro.jpg",
+        "stock":10,
+        "category":["polo","runner"]
+    },
+    {
+        "id": 7,
+        "name":"Short Adidas de 3 tiras negro",
+        "price":85,
+        "imagePath":"src/assets/img-db/shorts_3_tiras.jpg",
+        "stock":20,
+        "category":["short"]
+    },
+    {
+        "id": 8,
+        "name":"Short Adidas Condivo",
+        "price":100,
+        "imagePath":"src/assets/img-db/shorts_condivo.jpg",
+        "stock":30,
+        "category":["short","basketball"]
+    },
+    {
+        "id": 9,
+        "name":"Short Adidas Tastigo",
+        "price":70,
+        "imagePath":"src/assets/img-db/shorts_tastigo.jpg",
+        "stock":20,
+        "category":["short","basketball"]
+    },
+    {
+        "id": 10,
+        "name":"Zapatillas Adidas Retropy",
+        "price":230,
+        "imagePath":"src/assets/img-db/zapatilla_retropy_verde.jpg",
+        "stock":15,
+        "category":["zapatillas"]
+    },
+    {
+        "id": 11,
+        "name":"Zapatillas Adidas Runner ploma",
+        "price":240,
+        "imagePath":"src/assets/img-db/zapatilla_rozada.jpg",
+        "stock":15,
+        "category":["zapatillas","runner"]
+    },
+    {
+        "id": 12,
+        "name":"Zapatillas Adidas Terrex",
+        "price":410,
+        "imagePath":"src/assets/img-db/zapatilla_running_terrex.jpg",
+        "stock":10,
+        "category":["zapatillas","runner"]
+    }
+]

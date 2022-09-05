@@ -1,9 +1,9 @@
-import { React, useState } from 'react'
+import { React, useEffect } from 'react'
 import './Header.css'
 
-function Header({openCart,setOpenCart}) {
+function Header({openCart,setOpenCart, showMenu, setShowMenu}) {
 
-  const [showMenu, setShowMenu] = useState(false)
+  
 
   const theme_toggle = () => {
     console.log("cambiando tema ...");
@@ -15,6 +15,24 @@ function Header({openCart,setOpenCart}) {
   const closeMenuMobile = () => {
     setShowMenu(false)
   }
+  const toggleCard = () => {
+    setOpenCart(true)
+    setShowMenu(false)
+  }
+
+  //Detecting scroll and apply style to header
+  useEffect(() => {
+    const header = document.querySelector('#header')
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= 50) {
+          header.classList.add('scroll-header')
+        } else {
+          header.classList.remove('scroll-header')
+        }
+      })
+    }
+  })
   
   return (
     <header className="header" id="header">
@@ -51,9 +69,9 @@ function Header({openCart,setOpenCart}) {
           {/* Theme change button */}
           <i onClick={theme_toggle} className='bx bx-moon change-theme' id="theme-button"></i>
 
-          <div onClick={()=>{setOpenCart(true)}} className="nav__shop" id="cart-shop">
+          <div onClick={toggleCard} className="nav__shop" id="cart-shop">
             <i className='bx bx-shopping-bag'></i>
-            <span id="cart-count" className="count"></span>
+            <span id="cart-count" className="count">0</span>
           </div>
 
           <div onClick={toggleMenuMobile} className="nav__toggle" id="nav-toggle">
