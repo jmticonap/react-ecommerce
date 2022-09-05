@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import mixitup from 'mixitup'
 import './App.css'
 import Helper from './components/Helpers.js'
 import useData from './hooks/useProductsData'
@@ -20,16 +21,24 @@ function App() {
     console.log(`openCart: ${openCart}`);
   }
   const filterProducts = (category)=>{
-    setCurrentProducts(Helper.filterProducts(db, category))
+    setCurrentProducts(category?Helper.filterProducts(db, category):db)
   }
 
   useEffect(() => {
     //Db.createLocalDb()
     //console.log( Db.getCategoryList() );
     //console.log(Db.getProductsByCategory("runner"));
+    mixitup('#products__content', {
+      selectors: {
+        target: '.products__card'
+      },
+      animation: {
+        duration: 300
+      }
+    }).filter('all')
   },[])
   useEffect(()=> setCurrentProducts(db), [db])
-
+  
   return (
     <div className="App">
       <Loader time={3000} />

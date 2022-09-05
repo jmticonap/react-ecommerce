@@ -11,7 +11,7 @@ const ProductCard = ({product}) => {
     }
 
     return (
-        <article className="products__card">
+        <article className={`products__card ${product.category}`}>
             <div className="products__shape">
                 <img src={`${product.imagePath}`} alt={product.name} className="products__img" />
             </div>
