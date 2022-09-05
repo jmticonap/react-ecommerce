@@ -5,9 +5,7 @@ const Card = ({open, setOpen, onCheckout}) => {
     const cart_class_hide = 'cart'
     const cart_class_show = 'cart show-cart'
     const card_close = () => {
-        console.log("Ocultar cart");
         setOpen(false)
-        console.log(`Valor de OPEN: ${open}`);
     }
 
     return (
