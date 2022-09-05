@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Db from './components/db.js'
+import Helper from './components/Helpers.js'
+import useData from './hooks/useProductsData'
 import Loader from './components/Loader'
 import Header from './components/Header/Header'
 import Cart from './components/Cart/Cart'
@@ -9,19 +10,25 @@ import CategorySelector from './components/Products/CategorySelector'
 import ProductCard from './components/Products/ProductCard'
 
 function App() {
+  const {data:db} = useData()
+  const [currentProducts, setCurrentProducts] = useState([])
   const [openCart, setOpenCart] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
 
-  const openCardToggle = () => {
+  const openCardToggle = ()=>{
     setOpenCart(!openCart)
     console.log(`openCart: ${openCart}`);
+  }
+  const filterProducts = (category)=>{
+    setCurrentProducts(Helper.filterProducts(db, category))
   }
 
   useEffect(() => {
     //Db.createLocalDb()
     //console.log( Db.getCategoryList() );
     //console.log(Db.getProductsByCategory("runner"));
-  })
+  },[])
+  useEffect(()=> setCurrentProducts(db), [db])
 
   return (
     <div className="App">
@@ -33,10 +40,10 @@ function App() {
       <Main />
       <section className="products" id="products">
         <div className="products__container container">
-          <CategorySelector />
+          <CategorySelector categories={db?Helper.getCategoryData(db):null} filter={filterProducts} />
 
           <div className="products__content grid" id="products__content">
-            {Db.products().map(prod => <ProductCard key={`prod-${prod.id}`} product={prod} />)}
+            {currentProducts?.map(prod => <ProductCard key={`prod-${prod.value.id}`} product={prod.value} />)}
           </div>
         </div>
       </section>

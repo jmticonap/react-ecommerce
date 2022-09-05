@@ -1,10 +1,11 @@
 import { React, useEffect } from 'react'
 import './Header.css'
 
-function Header({openCart,setOpenCart, showMenu, setShowMenu}) {
-
-  
-
+function Header({
+  openCart,
+  setOpenCart, 
+  showMenu, 
+  setShowMenu}) {
   const theme_toggle = () => {
     console.log("cambiando tema ...");
   }

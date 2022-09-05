@@ -4,6 +4,29 @@ const Helpers = {
             style: 'currency',
             currency: 'PEN'
         }).format(value)
+    },
+    getCategoryData: (prod_data)=>{
+        if(prod_data.length>0){
+            //Getting a Set of categories from DB data
+            const categories = new Set( prod_data?.map(prod => prod.value['category']) )
+            const result = Array.from(categories).map(cat => {
+                return {
+                    name: cat,
+                    stock: prod_data
+                        .filter(prod => prod.value['category']== cat) // getting products width the same category
+                        .reduce((a,b)=> a+b.value['stock'] ,0) // sum stock of all products
+            }})
+    
+            return categories?result:[]
+        }else return []
+    },
+    getTotalCategoryStock: (data, category)=>{
+        return data
+            .filter(prod => prod['category']== category)
+            .reduce((a,b) => a+b['stock'],0)
+    },
+    filterProducts: (products, category) =>{
+        return products.filter(prod => prod.value['category']== category)
     }
 }
 

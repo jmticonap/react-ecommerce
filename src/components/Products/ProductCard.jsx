@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
     return (
         <article className="products__card">
             <div className="products__shape">
-                <img src={`./${product.imagePath}`} alt={product.name} className="products__img" />
+                <img src={`${product.imagePath}`} alt={product.name} className="products__img" />
             </div>
 
             <div className="products__data">

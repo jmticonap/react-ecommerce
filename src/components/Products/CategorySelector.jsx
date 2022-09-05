@@ -1,7 +1,8 @@
 import React from 'react';
 import './CategorySelector.css'
 
-const CategorySelector = () => {
+const CategorySelector = ({ categories, filter }) => {
+
     return (
         <ul className="products__filters">
             <li className="products__item products__line" data-filter="all">
@@ -13,7 +14,23 @@ const CategorySelector = () => {
                 </span>
             </li>
 
-            <li className="products__item products__line active-product" data-filter=".hoodies">
+            {
+                categories?.map(cat => {
+                    return (
+                        <li key={`cat-${cat['name']}`} 
+                            onClick={()=>filter(cat['name'])}
+                            className="products__item products__line" 
+                            data-filter=".{cat}">
+                            <h3 className="products__title">{cat['name']}</h3>
+                            <span className="products__stock">
+                                {cat['stock']} products
+                            </span>
+                        </li>
+                    )
+                })
+            }
+
+            {/* <li className="products__item products__line active-product" data-filter=".hoodies">
                 <h3 className="products__title">
                     Hoodies
                 </h3>
@@ -38,7 +55,7 @@ const CategorySelector = () => {
                 <span className="products__stock">
                     4 products
                 </span>
-            </li>
+            </li> */}
         </ul>
     );
 };
