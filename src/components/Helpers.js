@@ -13,8 +13,10 @@ const Helpers = {
                 return {
                     name: cat,
                     stock: prod_data
-                        .filter(prod => prod.value['category']== cat) // getting products width the same category
-                        .reduce((a,b)=> a+b.value['stock'] ,0) // sum stock of all products
+                        .filter(prod => prod.value['category'] == cat) // getting products width the same category
+                        .reduce((a,b)=> a+b.value['stock'] ,0), // sum stock of all products
+                    item_quantity: prod_data
+                        .filter(prod => prod.value['category'] == cat).length
             }})
     
             return categories?result:[]
@@ -24,6 +26,9 @@ const Helpers = {
         return data
             .filter(prod => prod['category']== category)
             .reduce((a,b) => a+b['stock'],0)
+    },
+    getTotalCategoryItems: ()=>{
+
     },
     filterProducts: (products, category) =>{
         return products.filter(prod => prod.value['category']== category)

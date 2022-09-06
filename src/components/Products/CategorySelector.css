@@ -13,6 +13,10 @@
     margin-bottom: 3.5rem;
 }
 
+.products__filters__active *{
+    color: var(--first-color) !important;
+}
+
 .products__line {
     position: relative;
 }

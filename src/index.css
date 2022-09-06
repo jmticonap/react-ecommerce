@@ -317,7 +317,7 @@ body.dark-theme {
     padding: 0 0 8rem;
   }
   .products {
-    padding: 4rem 0 10rem;
+    padding: 0 0 5rem;
   }
   .products__filters {
     grid-template-columns: repeat(4, 200px);

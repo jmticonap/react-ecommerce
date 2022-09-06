@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CategorySelector.css'
+import CategorySelectorItem from './CategorySelectorItem';
 
 const CategorySelector = ({ categories, filter }) => {
+    const [activeCategory, setActiveCategory] = useState('0')
+
+    const makeKey = (category)=>`cat-${category['name']}`
+    //CategorySelectorItem
+    const selectCategory = (category) => {
+        setActiveCategory(makeKey(category))
+        document
+            .querySelector("#li_all_products")
+            .classList.remove('products__filters__active')
+        filter(category['name'], makeKey(category))
+    }
+
+    useEffect(() => {
+        const li_categories = document.querySelectorAll(".products__item, .products__line")
+        li_categories.forEach(element => {
+            element.addEventListener('click', function () {
+                this.classList.remove("products__filters__active")
+            })
+        })
+        const all_products = document.querySelector("#li_all_products")
+        all_products.addEventListener('click', function(){
+            this.classList.add('products__filters__active')
+            setActiveCategory('0')
+        })
+        console.log(li_categories);
+    }, [])
 
     return (
         <ul className="products__filters">
-            <li className="products__item products__line" 
-                onClick={()=>filter()}
+            <li id="li_all_products" className="products__item products__line products__filters__active"
+                onClick={() => filter()}
                 data-filter="all">
                 <h3 className="products__title">
                     Show All
@@ -17,19 +44,11 @@ const CategorySelector = ({ categories, filter }) => {
             </li>
 
             {
-                categories?.map(cat => {
-                    return (
-                        <li key={`cat-${cat['name']}`} 
-                            onClick={()=>filter(cat['name'])}
-                            className="products__item products__line" 
-                            data-filter={cat['name']}>
-                            <h3 className="products__title">{cat['name']}</h3>
-                            <span className="products__stock">
-                                {cat['stock']} products
-                            </span>
-                        </li>
-                    )
-                })
+                categories?.map(cat => (<CategorySelectorItem
+                        key={makeKey(cat)}
+                        category={cat}
+                        onSelectCategory={()=>selectCategory(cat)}
+                        isActive={`cat-${cat['name']}` === activeCategory} />))
             }
 
         </ul>
