@@ -32,6 +32,9 @@ const Helpers = {
     },
     filterProducts: (products, category) =>{
         return products.filter(prod => prod.value['category']== category)
+    },
+    capitalWord: (text) => {
+        return `${text[0].toUpperCase()}${text.substring(1,text.length)}`
     }
 }
 

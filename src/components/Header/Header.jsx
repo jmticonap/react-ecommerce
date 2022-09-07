@@ -6,8 +6,17 @@ function Header({
   setOpenCart, 
   showMenu, 
   setShowMenu}) {
+  const STORAGE_DARK_THEME = 'is_dark_theme'
   const theme_toggle = () => {
     console.log("cambiando tema ...");
+    const dark_theme = document.body.classList.toggle("dark-theme")
+    window.localStorage.setItem(STORAGE_DARK_THEME, JSON.stringify(dark_theme))
+  }
+  const initTheme = ()=>{
+    const isDarkTheme = window.localStorage.getItem(STORAGE_DARK_THEME)
+    if(isDarkTheme){
+      document.body.classList.add("dark-theme")
+    }
   }
   //show-menu
   const toggleMenuMobile = () => {
@@ -23,6 +32,8 @@ function Header({
 
   //Detecting scroll and apply style to header
   useEffect(() => {
+    initTheme()
+
     const header = document.querySelector('#header')
     if (header) {
       window.addEventListener('scroll', () => {
@@ -33,7 +44,7 @@ function Header({
         }
       })
     }
-  })
+  },[])
   
   return (
     <header className="header" id="header">
